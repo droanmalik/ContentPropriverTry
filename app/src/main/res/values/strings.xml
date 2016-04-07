@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">ContentPropriverTry</string>
+    <string name="content_authority">me.droan.contentproprivertry</string>
 </resources>
