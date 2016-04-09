@@ -27,13 +27,16 @@ public class FlavorDBHelper extends SQLiteOpenHelper {
 
   public FlavorDBHelper(Context context) {
     super(context, DATABASE_NAME, null, DATABASE_VERSION);
+    Log.d(TAG, "FlavorDBHelper() called with: " + "context = [" + context + "]");
   }
 
   @Override public void onCreate(SQLiteDatabase db) {
+    Log.d(TAG, "onCreate() called with: " + "db = [" + db + "]");
     db.execSQL(SQL_CREATE_FLAVOR_TABLE);
   }
 
   @Override public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+
     Log.d(TAG, "onUpgrade() called with: "
         + "db = ["
         + db.toString()

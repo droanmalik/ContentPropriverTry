@@ -23,6 +23,7 @@ public class FlavorProvider extends ContentProvider {
   private FlavorDBHelper openDBHelper;
 
   private static UriMatcher buildUriMatcher() {
+    Log.d(TAG, "buildUriMatcher() called with: " + "");
     final UriMatcher matcher = new UriMatcher(UriMatcher.NO_MATCH);
     final String authority = FlavorContract.CONTENT_AUTHORITY;
     matcher.addURI(authority, FlavorContract.FlavorTable.TABLE_NAME, FLAVOR);
@@ -37,6 +38,7 @@ public class FlavorProvider extends ContentProvider {
 
   @Nullable @Override public String getType(Uri uri) {
     final int match = sUriMatcher.match(uri);
+    Log.d(TAG, "getType() called with: " + "uri = [" + uri + "]");
     switch (match) {
       case FLAVOR:
         return FlavorContract.FlavorTable.CONTENT_DIR_TYPE;
@@ -50,6 +52,18 @@ public class FlavorProvider extends ContentProvider {
   @Nullable @Override
   public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs,
       String sortOrder) {
+    Log.d(TAG, "query() called with: "
+        + "uri = ["
+        + uri
+        + "], projection = ["
+        + projection
+        + "], selection = ["
+        + selection
+        + "], selectionArgs = ["
+        + selectionArgs
+        + "], sortOrder = ["
+        + sortOrder
+        + "]");
     Cursor retCursor;
     switch (sUriMatcher.match(uri)) {
       // All Flavors selected
@@ -88,6 +102,7 @@ public class FlavorProvider extends ContentProvider {
   }
 
   @Override public int bulkInsert(Uri uri, ContentValues[] values) {
+    Log.d(TAG, "bulkInsert() called with: " + "uri = [" + uri + "], values = [" + values + "]");
 
     final SQLiteDatabase db = openDBHelper.getWritableDatabase();
 

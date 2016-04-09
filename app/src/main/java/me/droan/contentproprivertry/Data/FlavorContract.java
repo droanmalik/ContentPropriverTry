@@ -4,6 +4,7 @@ import android.content.ContentResolver;
 import android.content.ContentUris;
 import android.net.Uri;
 import android.provider.BaseColumns;
+import android.widget.Toast;
 
 /**
  * Created by drone on 07/04/16.
@@ -11,7 +12,7 @@ import android.provider.BaseColumns;
 public class FlavorContract {
   public static final String CONTENT_AUTHORITY = "me.droan.contentproprivertry";
   public static final Uri BASE_CONTENT_URI = Uri.parse("content://" + CONTENT_AUTHORITY);
-
+  private static final String TAG = "FlavorContract";
   public static final class FlavorTable implements BaseColumns {
     public static final String TABLE_NAME = "flavor";
 
@@ -27,7 +28,6 @@ public class FlavorContract {
         ContentResolver.CURSOR_DIR_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + TABLE_NAME;
     public static final String CONTENT_ITEM_TYPE =
         ContentResolver.CURSOR_ITEM_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + TABLE_NAME;
-
     public static Uri buildFlavorURI(long id) {
       return ContentUris.withAppendedId(CONTENT_URI, id);
     }

@@ -62,6 +62,9 @@ public class MainActivity extends AppCompatActivity {
     } else {
       int colmCount = c.getColumnCount();
       Toast.makeText(MainActivity.this, "" + colmCount, Toast.LENGTH_SHORT).show();
+      Cursor a = getContentResolver().query(FlavorContract.FlavorTable.buildFlavorURI(1),
+          new String[] { FlavorContract.FlavorTable._ID }, null, null, null);
+      Toast.makeText(MainActivity.this, "" + c.getColumnName(0), Toast.LENGTH_SHORT).show();
     }
   }
 }
